@@ -101,7 +101,7 @@ public class PROG5121poeTest {
         assertFalse(userLogin.loginUser("j_123", "wrongpassword"));
     }
 
-    // ===================== RETURN LOGIN STATUS TESTS =====================
+    // ======================= RETURN LOGIN STATUS TESTS =======================
 
     /**
      * Test that returnLoginStatus returns the correct welcome message on success.

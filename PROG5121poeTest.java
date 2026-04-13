@@ -3,87 +3,59 @@ package com.mycompany.prog5121poe;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- * Unit tests for the login class.
- * Tests cover username validation, password complexity,
- * cell phone number formatting, and login authentication.
- *
- * @author Lindelani
- */
 public class PROG5121poeTest {
 
-    // ===================== USERNAME TESTS =================
+    // --- username tests ---
 
-    /**
-     * Test that a correctly formatted username (contains '_', <= 5 chars) returns true.
-     * Test Data: "kyl_1"
-     */
+    // "kyl_1" should pass since it has an underscore and is under 5 chars
     @Test
     public void testUsernameCorrectlyFormatted() {
         login userLogin = new login();
         assertTrue(userLogin.checkUserName("kyl_1"));
     }
 
-    /**
-     * Test that an incorrectly formatted username returns false.
-     * Test Data: "kyle!!!!!!!"
-     */
+    // "kyle!!!!!!!" is too long and has no underscore
     @Test
     public void testUsernameIncorrectlyFormatted() {
         login userLogin = new login();
         assertFalse(userLogin.checkUserName("kyle!!!!!!!"));
     }
 
-    // ===================== PASSWORD TESTS =====================
+    // --- password tests ---
 
-    /**
-     * Test that a password meeting all complexity requirements returns true.
-     * Test Data: "Ch&&sec@ke99!"
-     */
+    // this password has everything it needs
     @Test
     public void testPasswordMeetsComplexityRequirements() {
         login userLogin = new login();
         assertTrue(userLogin.checkPasswordComplexity("Ch&&sec@ke99!"));
     }
 
-    /**
-     * Test that a password that does NOT meet complexity requirements returns false.
-     * Test Data: "password"
-     */
+    // "password" is missing a capital, number, and special character
     @Test
     public void testPasswordDoesNotMeetComplexityRequirements() {
         login userLogin = new login();
         assertFalse(userLogin.checkPasswordComplexity("password"));
     }
 
-    // ===================== CELL PHONE TESTS =====================
+    // --- cell phone tests ---
 
-    /**
-     * Test that a correctly formatted SA cell number returns true.
-     * Test Data: +27838968976
-     */
+    // valid SA number with +27
     @Test
     public void testCellPhoneCorrectlyFormatted() {
         login userLogin = new login();
         assertTrue(userLogin.checkCellPhoneNumber("+27838968976"));
     }
 
-    /**
-     * Test that an incorrectly formatted cell number returns false.
-     * Test Data: 08966553
-     */
+    // missing the country code so it should fail
     @Test
     public void testCellPhoneIncorrectlyFormatted() {
         login userLogin = new login();
         assertFalse(userLogin.checkCellPhoneNumber("08966553"));
     }
 
-    // ===================== LOGIN TESTS =====================
+    // --- login tests ---
 
-    /**
-     * Test that a successful login returns true.
-     * Registers a user first, then logs in with correct credentials.
-     */
+    // register first then try logging in with the right details
     @Test
     public void testLoginSuccessful() {
         login userLogin = new login();
@@ -91,9 +63,7 @@ public class PROG5121poeTest {
         assertTrue(userLogin.loginUser("kyl_1", "Ch&&sec@ke99!"));
     }
 
-    /**
-     * Test that a failed login (wrong password) returns false.
-     */
+    // wrong username and password, should return false
     @Test
     public void testLoginFailed() {
         login userLogin = new login();
@@ -101,11 +71,9 @@ public class PROG5121poeTest {
         assertFalse(userLogin.loginUser("j_123", "wrongpassword"));
     }
 
-    // ======================= RETURN LOGIN STATUS TESTS =======================
+    // --- return login status tests ---
 
-    /**
-     * Test that returnLoginStatus returns the correct welcome message on success.
-     */
+    // check the welcome message is correct
     @Test
     public void testReturnLoginStatusSuccess() {
         login userLogin = new login();
@@ -114,9 +82,7 @@ public class PROG5121poeTest {
         assertEquals("Welcome kyle something, it is great to see you again.", result);
     }
 
-    /**
-     * Test that returnLoginStatus returns the correct error message on failure.
-     */
+    // check the error message when login fails
     @Test
     public void testReturnLoginStatusFailure() {
         login userLogin = new login();

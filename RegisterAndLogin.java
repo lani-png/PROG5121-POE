@@ -2,12 +2,6 @@ package com.mycompany.prog5121poe;
 
 import java.util.Scanner;
 
-/**
- * Main application class for the PROG5121 POE.
- * Handles user input and delegates logic to the Login class.
- *
- * @author Lindelani
- */
 public class RegisterAndLogin {
 
     public static void main(String[] args) {
@@ -17,14 +11,14 @@ public class RegisterAndLogin {
         String firstName, lastName, userName, password, phoneNum;
         String registrationResult;
 
-        // --- Registration ---
+        // get the user's name first
         System.out.print("Enter your first name: ");
         firstName = input.nextLine();
 
         System.out.print("Enter your last name: ");
         lastName = input.nextLine();
 
-        // Keep prompting until all fields are valid
+        // keep asking until everything is valid
         do {
             System.out.print("Enter your username (must contain '_' and be <= 5 characters): ");
             userName = input.nextLine();
@@ -44,7 +38,7 @@ public class RegisterAndLogin {
         System.out.println("Password successfully captured");
         System.out.println("Cell phone number successfully captured");
 
-        // --- Login ---
+        // now handle login
         System.out.print("\nEnter your username to log in: ");
         String enteredUsername = input.nextLine();
 
